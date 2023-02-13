@@ -28,10 +28,16 @@ class MyFirstWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Context: ${_contextRruntime()}');
+
     return Container(
       child: Center(
         child: Text(title),
       ),
     );
+  }
+
+  Type _contextRruntime() {
+    return runtimeType;
   }
 }
