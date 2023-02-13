@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -69,15 +67,20 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class MyFirstWidget extends StatelessWidget {
-  late int _counter = 0;
-
+class MyFirstWidget extends StatefulWidget {
   MyFirstWidget({super.key});
+
+  @override
+  State<MyFirstWidget> createState() => _MyFirstWidgetState();
+}
+
+class _MyFirstWidgetState extends State<MyFirstWidget> {
+  late int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
     _counter++;
-    print("Counter: $_counter");
+    print('Counter: $_counter');
 
     return Container(
       child: const Center(
