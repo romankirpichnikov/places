@@ -21,18 +21,23 @@ class App extends StatelessWidget {
   }
 }
 
-class MyFirstWidget extends StatelessWidget {
+class MyFirstWidget extends StatefulWidget {
   final String title;
 
   MyFirstWidget({super.key, required this.title});
 
+  @override
+  State<MyFirstWidget> createState() => _MyFirstWidgetState();
+}
+
+class _MyFirstWidgetState extends State<MyFirstWidget> {
   @override
   Widget build(BuildContext context) {
     print('Context: ${_contextRruntime()}');
 
     return Container(
       child: Center(
-        child: Text(title),
+        child: Text(widget.title),
       ),
     );
   }
