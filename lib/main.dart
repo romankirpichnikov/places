@@ -14,78 +14,35 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyFirstWidget(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  final String title;
-
-  const MyHomePage({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      home: MyFirstWidget(
+        title: 'Hello!',
       ),
     );
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
   }
 }
 
 class MyFirstWidget extends StatefulWidget {
-  MyFirstWidget({super.key});
+  final String title;
+
+  MyFirstWidget({super.key, required this.title});
 
   @override
   State<MyFirstWidget> createState() => _MyFirstWidgetState();
 }
 
 class _MyFirstWidgetState extends State<MyFirstWidget> {
-  late int _counter = 0;
-
   @override
   Widget build(BuildContext context) {
-    _counter++;
-    print('Counter: $_counter');
+    print('Context: ${_contextRruntime()}');
 
     return Container(
-      child: const Center(
-        child: Text('Hello!'),
+      child: Center(
+        child: Text(widget.title),
       ),
     );
+  }
+
+  Type _contextRruntime() {
+    return runtimeType;
   }
 }
