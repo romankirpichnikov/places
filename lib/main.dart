@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstWidget(),
     );
   }
 }
@@ -64,5 +64,28 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _counter++;
     });
+  }
+}
+
+class MyFirstWidget extends StatefulWidget {
+  MyFirstWidget({super.key});
+
+  @override
+  State<MyFirstWidget> createState() => _MyFirstWidgetState();
+}
+
+class _MyFirstWidgetState extends State<MyFirstWidget> {
+  late int _counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    _counter++;
+    print('Counter: $_counter');
+
+    return Container(
+      child: const Center(
+        child: Text('Hello!'),
+      ),
+    );
   }
 }
