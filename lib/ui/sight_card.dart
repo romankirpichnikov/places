@@ -70,9 +70,7 @@ class SightCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     Text(
                       sight.details,
                       maxLines: 2,

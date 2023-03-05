@@ -7,6 +7,7 @@ class Sight {
   String url;
   String details;
   SightType type;
+  String workingHours;
 
   Sight({
     required this.name,
@@ -15,6 +16,7 @@ class Sight {
     required this.url,
     required this.details,
     required this.type,
+    required this.workingHours,
   });
 
   @override
