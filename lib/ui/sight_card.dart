@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/sight_details_card.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -19,61 +20,72 @@ class SightCard extends StatelessWidget {
           color: Color(0xFFF5F5F5),
         ),
         clipBehavior: Clip.hardEdge,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              color: Colors.indigo,
-              height: 100,
-              child: Padding(
+        child: InkWell(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<SightDetailsCard>(
+              fullscreenDialog: true,
+              builder: (context) => SightDetailsCard(
+                sight: sight,
+              ),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                color: Colors.indigo,
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            sight.type.name,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.redAccent,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          sight.type.name,
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                        Container(
-                          width: 20,
-                          height: 20,
-                          color: Colors.redAccent,
-                        ),
-                      ],
+                    Text(
+                      sight.name,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      sight.details,
+                      maxLines: 2,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    sight.name,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    sight.details,
-                    maxLines: 2,
-                    style: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
