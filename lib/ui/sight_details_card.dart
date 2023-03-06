@@ -16,14 +16,14 @@ class SightDetailsCard extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
                   color: const Color(0xffeeee00),
                   height: 360.0,
                 ),
                 const SizedBox(height: 24),
-                Padding(
+                Container(
+                  alignment: Alignment.topLeft,
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     sight.name,
@@ -66,17 +66,18 @@ class SightDetailsCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 20, top: 20),
-                    width: 328,
-                    height: 48,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.green,
-                    ),
-                    child: const Center(child: Text('Построить маршрут')),
+                Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(bottom: 20, top: 20),
+                  constraints: const BoxConstraints(
+                    maxWidth: 280,
+                    maxHeight: 48,
                   ),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.green,
+                  ),
+                  child: const Center(child: Text('Построить маршрут')),
                 ),
                 const SizedBox(height: 5),
                 const Divider(

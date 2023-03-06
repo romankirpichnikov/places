@@ -36,7 +36,7 @@ class SightCard extends StatelessWidget {
               Container(
                 color: Colors.indigo,
                 height: 100,
-                child: Padding(
+                child: Container(
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
@@ -58,7 +58,7 @@ class SightCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              Container(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
