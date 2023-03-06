@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:places/mocks.dart';
+import 'package:places/ui/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({super.key});
@@ -43,6 +45,13 @@ class _SightListScreenState extends State<SightListScreen> {
         titleSpacing: 16,
       ),
       backgroundColor: _backgroundColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: mocks.map((sight) {
+            return SightCard(sight: sight);
+          }).toList(),
+        ),
+      ),
     );
   }
 }
