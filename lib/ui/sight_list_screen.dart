@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/custom_app_bar.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/sight_card.dart';
 
@@ -15,34 +16,10 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          text: const TextSpan(
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w700,
-              fontSize: 32,
-            ),
-            children: [
-              TextSpan(
-                text: 'С',
-                style: TextStyle(color: Colors.green),
-              ),
-              TextSpan(text: 'писок\n'),
-              TextSpan(
-                text: 'и',
-                style: TextStyle(color: Colors.yellow),
-              ),
-              TextSpan(text: 'нтересных мест'),
-            ],
-          ),
-        ),
+      appBar: CustomAppBar(
+        title: const AppBarTitleSightList(),
         centerTitle: false,
         backgroundColor: _backgroundColor,
-        elevation: 0,
-        toolbarHeight: 64,
-        titleSpacing: 16,
       ),
       backgroundColor: _backgroundColor,
       body: SingleChildScrollView(
@@ -51,6 +28,38 @@ class _SightListScreenState extends State<SightListScreen> {
             return SightCard(sight: sight);
           }).toList(),
         ),
+      ),
+    );
+  }
+}
+
+class AppBarTitleSightList extends StatelessWidget {
+  const AppBarTitleSightList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: const TextSpan(
+        style: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w700,
+          fontSize: 32,
+        ),
+        children: [
+          TextSpan(
+            text: 'С',
+            style: TextStyle(color: Colors.green),
+          ),
+          TextSpan(text: 'писок\n'),
+          TextSpan(
+            text: 'и',
+            style: TextStyle(color: Colors.yellow),
+          ),
+          TextSpan(text: 'нтересных мест'),
+        ],
       ),
     );
   }

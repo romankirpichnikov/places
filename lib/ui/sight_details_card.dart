@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/domain/sight_types.dart';
+import 'package:places/custom_app_bar.dart';
 import 'package:places/domain/sight.dart';
 
 class SightDetailsCard extends StatelessWidget {
@@ -113,8 +114,7 @@ class SightDetailsCard extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: AppBar(
-              elevation: 0,
+            child: CustomAppBar(
               backgroundColor: Colors.transparent,
               leading: Padding(
                 padding: const EdgeInsets.all(8.0),
