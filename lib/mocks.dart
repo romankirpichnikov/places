@@ -18,6 +18,7 @@ Sight sight1 = Sight(
   details:
       'Символ Франции, одна из самых известных достопримечательностей мира',
   type: SightType.architecture,
+  workingHours: 'закрыто до 09:00',
 );
 
 Sight sight2 = Sight(
@@ -29,6 +30,7 @@ Sight sight2 = Sight(
   details:
       'Древний инканский город, расположенный на высоте 2,4 тысяч метров в горах Анды',
   type: SightType.history,
+  workingHours: 'закрыто до 09:00',
 );
 
 Sight sight3 = Sight(
@@ -40,6 +42,7 @@ Sight sight3 = Sight(
   details:
       'Один из самых известных оперных театров в мире, расположенный на побережье Сиднея',
   type: SightType.culture,
+  workingHours: 'закрыто до 09:00',
 );
 
 Sight sight4 = Sight(
@@ -50,6 +53,7 @@ Sight sight4 = Sight(
       'https://upload.wikimedia.org/wikipedia/commons/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
   details: 'Шедевр Леонардо да Винчи, находящийся в Лувре в Париже',
   type: SightType.art,
+  workingHours: 'закрыто до 09:00',
 );
 
 Sight sight5 = Sight(
@@ -60,4 +64,5 @@ Sight sight5 = Sight(
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Grand_Canyon_Hopi_Point_with_rainbow_2013.jpg/640px-Grand_Canyon_Hopi_Point_with_rainbow_2013.jpg',
   details: 'Огромный каньон в Северной Америке, расположенный в штате Аризона',
   type: SightType.nature,
+  workingHours: 'закрыто до 09:00',
 );
