@@ -12,83 +12,80 @@ class SightCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 3 / 2,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-            color: Color(0xFFF5F5F5),
-          ),
-          clipBehavior: Clip.hardEdge,
-          child: InkWell(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute<SightDetailsCard>(
-                fullscreenDialog: true,
-                builder: (context) => SightDetailsCard(
-                  sight: sight,
-                ),
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 20),
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          color: Color(0xFFF5F5F5),
+        ),
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<SightDetailsCard>(
+              fullscreenDialog: true,
+              builder: (context) => SightDetailsCard(
+                sight: sight,
               ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  color: Colors.indigo,
-                  height: 100,
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              sight.type.name,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            Container(
-                              width: 20,
-                              height: 20,
-                              color: Colors.redAccent,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                color: Colors.indigo,
+                height: 100,
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            sight.type.name,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            color: Colors.redAccent,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 250),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          sight.name,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 250),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        sight.name,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(height: 5),
-                        Text(
-                          sight.details,
-                          maxLines: 2,
-                          style: const TextStyle(
-                            color: Colors.grey,
-                          ),
-                          overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        sight.details,
+                        maxLines: 2,
+                        style: const TextStyle(
+                          color: Colors.grey,
                         ),
-                      ],
-                    ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

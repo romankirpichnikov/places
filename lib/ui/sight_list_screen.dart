@@ -11,18 +11,15 @@ class SightListScreen extends StatefulWidget {
 }
 
 class _SightListScreenState extends State<SightListScreen> {
-  final Color _backgroundColor = Colors.white;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: const AppBarTitleSightList(),
+      appBar: const CustomAppBar(
+        title: AppBarTitleSightList(),
         centerTitle: false,
-        backgroundColor: _backgroundColor,
       ),
-      backgroundColor: _backgroundColor,
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: mocks.map((sight) {
             return SightCard(sight: sight);
