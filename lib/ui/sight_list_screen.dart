@@ -23,6 +23,7 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       backgroundColor: _backgroundColor,
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: mocks.map((sight) {
             return SightCard(sight: sight);
