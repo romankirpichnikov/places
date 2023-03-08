@@ -122,8 +122,8 @@ class SightDetailsCard extends StatelessWidget {
             right: 0,
             child: CustomAppBar(
               backgroundColor: Colors.transparent,
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
+              leading: Container(
+                margin: const EdgeInsets.only(left: 8, top: 16),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Colors.white,
