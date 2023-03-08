@@ -32,34 +32,45 @@ class SightCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 100,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(sight.url),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            sight.type.name,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          Container(
-                            width: 20,
-                            height: 20,
-                            color: Colors.redAccent,
-                          ),
-                        ],
+                child: Stack(
+                  children: [
+                    const Positioned.fill(
+                      child: Center(
+                        child: CircularProgressIndicator(),
                       ),
-                    ],
-                  ),
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(sight.url),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  sight.type.name,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  color: Colors.redAccent,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
