@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/custom_app_bar.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/utils/loading_builder.dart';
 
 class SightDetailsCard extends StatelessWidget {
   final Sight sight;
@@ -23,20 +24,7 @@ class SightDetailsCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   height: 360,
                   width: double.infinity,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes!
-                            : null,
-                      ),
-                    );
-                  },
+                  loadingBuilder: loadingBuilder,
                 ),
                 const SizedBox(height: 24),
                 Container(
