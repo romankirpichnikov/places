@@ -17,7 +17,6 @@ class SightCard extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Color(0xFFF5F5F5),
         ),
         clipBehavior: Clip.hardEdge,
         child: InkWell(
@@ -34,8 +33,13 @@ class SightCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                color: Colors.indigo,
                 height: 100,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(sight.url),
+                    fit: BoxFit.cover,
+                  ),
+                ),
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   child: Column(
@@ -58,7 +62,7 @@ class SightCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              Container(
                 padding: const EdgeInsets.all(8.0),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
