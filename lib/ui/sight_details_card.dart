@@ -18,9 +18,25 @@ class SightDetailsCard extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  color: const Color(0xffeeee00),
-                  height: 360.0,
+                Image.network(
+                  sight.url,
+                  fit: BoxFit.cover,
+                  height: 360,
+                  width: double.infinity,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                            : null,
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 24),
                 Container(
