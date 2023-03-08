@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-const double kLoadingProgressIndicatorSize = 24.0;
-const int kDefaultExpectedTotalBytes = -1;
-
 Widget loadingBuilder(
   BuildContext context,
   Widget child,
@@ -20,10 +17,7 @@ Widget loadingBuilder(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircularProgressIndicator(
-          value: progress,
-          strokeWidth: kLoadingProgressIndicatorSize / 4,
-        ),
+        CircularProgressIndicator(value: progress),
         const SizedBox(height: 8),
         Text('Загрузка $loadedPercent %'),
       ],
