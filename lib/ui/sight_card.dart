@@ -36,38 +36,44 @@ class SightCard extends StatelessWidget {
                 height: 100,
                 child: Stack(
                   children: [
-                    const Positioned.fill(
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                    Image.network(
+                      sight.url,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
                     ),
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(sight.url),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Container(
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  sight.type.name,
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  color: Colors.redAccent,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                sight.type.name,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              Container(
+                                width: 20,
+                                height: 20,
+                                color: Colors.redAccent,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
