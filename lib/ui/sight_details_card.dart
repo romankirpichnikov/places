@@ -21,10 +21,10 @@ class SightDetailsCard extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 360,
+                  width: double.infinity,
                   child: Image.network(
                     sight.url,
                     fit: BoxFit.cover,
-                    width: double.infinity,
                     loadingBuilder: loadingBuilder,
                   ),
                 ),
