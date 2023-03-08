@@ -19,12 +19,14 @@ class SightDetailsCard extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                Image.network(
-                  sight.url,
-                  fit: BoxFit.cover,
+                SizedBox(
                   height: 360,
-                  width: double.infinity,
-                  loadingBuilder: loadingBuilder,
+                  child: Image.network(
+                    sight.url,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    loadingBuilder: loadingBuilder,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Container(
