@@ -3,6 +3,8 @@ import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/sight_details_card.dart';
 
+import 'package:places/utils/loading_builder.dart';
+
 class SightCard extends StatelessWidget {
   final Sight sight;
 
@@ -40,20 +42,7 @@ class SightCard extends StatelessWidget {
                       sight.url,
                       fit: BoxFit.cover,
                       width: double.infinity,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) {
-                          return child;
-                        }
-
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        );
-                      },
+                      loadingBuilder: loadingBuilder,
                     ),
                     Container(
                       padding: const EdgeInsets.all(20),

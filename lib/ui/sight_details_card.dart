@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/custom_app_bar.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/utils/loading_builder.dart';
 
 class SightDetailsCard extends StatelessWidget {
   final Sight sight;
@@ -18,9 +19,14 @@ class SightDetailsCard extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  color: const Color(0xffeeee00),
-                  height: 360.0,
+                SizedBox(
+                  height: 360,
+                  width: double.infinity,
+                  child: Image.network(
+                    sight.url,
+                    fit: BoxFit.cover,
+                    loadingBuilder: loadingBuilder,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Container(
@@ -116,8 +122,8 @@ class SightDetailsCard extends StatelessWidget {
             right: 0,
             child: CustomAppBar(
               backgroundColor: Colors.transparent,
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
+              leading: Container(
+                margin: const EdgeInsets.only(left: 8, top: 16),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Colors.white,
