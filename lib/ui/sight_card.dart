@@ -17,7 +17,6 @@ class SightCard extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Color(0xFFF5F5F5),
         ),
         clipBehavior: Clip.hardEdge,
         child: InkWell(
@@ -33,32 +32,54 @@ class SightCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                color: Colors.indigo,
+              SizedBox(
                 height: 100,
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            sight.type.name,
-                            style: const TextStyle(color: Colors.white),
+                child: Stack(
+                  children: [
+                    Image.network(
+                      sight.url,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
                           ),
-                          Container(
-                            width: 20,
-                            height: 20,
-                            color: Colors.redAccent,
+                        );
+                      },
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                sight.type.name,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              Container(
+                                width: 20,
+                                height: 20,
+                                color: Colors.redAccent,
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Padding(
+              Container(
                 padding: const EdgeInsets.all(8.0),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
