@@ -49,28 +49,42 @@ class _VisitingScreenState extends State<VisitingScreen> {
               .map((data) => SightListScreen(sights: data.sights))
               .toList(),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 2,
-          items: [
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset('res/icons/list.svg'),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset('res/icons/map.svg'),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset('res/icons/favorite.svg'),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset('res/icons/settings.svg'),
-            ),
-          ],
-        ),
+        bottomNavigationBar: const BottomNavigation(),
       ),
+    );
+  }
+}
+
+class BottomNavigation extends StatelessWidget {
+  const BottomNavigation({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: 2,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: [
+        BottomNavigationBarItem(
+          label: '',
+          icon: SvgPicture.asset('res/icons/list.svg'),
+        ),
+        BottomNavigationBarItem(
+          label: '',
+          icon: SvgPicture.asset('res/icons/map.svg'),
+        ),
+        BottomNavigationBarItem(
+          label: '',
+          icon: SvgPicture.asset('res/icons/favorite.svg'),
+        ),
+        BottomNavigationBarItem(
+          label: '',
+          icon: SvgPicture.asset('res/icons/settings.svg'),
+        ),
+      ],
     );
   }
 }
