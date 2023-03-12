@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:places/mocks.dart';
+import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
-  const SightListScreen({super.key});
+  final List<Sight> sights;
+  const SightListScreen({super.key, required this.sights});
 
   @override
   State<SightListScreen> createState() => _SightListScreenState();
@@ -21,7 +22,7 @@ class _SightListScreenState extends State<SightListScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10),
         child: Column(
-          children: mocks.map((sight) {
+          children: widget.sights.map((sight) {
             return SightCard(sight: sight);
           }).toList(),
         ),

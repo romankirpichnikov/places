@@ -8,6 +8,7 @@ class Sight {
   String details;
   SightType type;
   String workingHours;
+  bool visited;
 
   Sight({
     required this.name,
@@ -17,6 +18,7 @@ class Sight {
     required this.details,
     required this.type,
     required this.workingHours,
+    required this.visited,
   });
 
   @override
