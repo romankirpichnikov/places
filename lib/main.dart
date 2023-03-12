@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/sight_list_screen.dart';
+import 'package:places/ui/screens/sight_list_screen.dart';
 
 void main() {
   runApp(const App());

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/domain/sight_types.dart';
-import 'package:places/custom_app_bar.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/utils/loading_builder.dart';
 
 class SightDetailsCard extends StatelessWidget {

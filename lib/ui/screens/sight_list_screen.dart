@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/custom_app_bar.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/sight_card.dart';
+import 'package:places/ui/widgets/custom_app_bar.dart';
+import 'package:places/ui/widgets/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({super.key});
