@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/tab_data.dart';
 import 'package:places/mocks.dart';
@@ -50,11 +51,23 @@ class _VisitingScreenState extends State<VisitingScreen> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: 2,
-          items: const [
-            BottomNavigationBarItem(label: '1', icon: Icon(Icons.ac_unit)),
-            BottomNavigationBarItem(label: '2', icon: Icon(Icons.ac_unit)),
-            BottomNavigationBarItem(label: '3', icon: Icon(Icons.ac_unit)),
-            BottomNavigationBarItem(label: '4', icon: Icon(Icons.ac_unit)),
+          items: [
+            BottomNavigationBarItem(
+              label: '',
+              icon: SvgPicture.asset('res/icons/list.svg'),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: SvgPicture.asset('res/icons/map.svg'),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: SvgPicture.asset('res/icons/favorite.svg'),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: SvgPicture.asset('res/icons/settings.svg'),
+            ),
           ],
         ),
       ),

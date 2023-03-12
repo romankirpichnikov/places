@@ -20,12 +20,20 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-flutter_svg: ^2.0.1
-
-assets:
-  - res/
-
-fonts:
-  - family: Roboto
-    fonts:
-      - asset: res/fonts/roboto/*.ttf
+  assets:
+    - res/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: res\fonts\roboto\Roboto-Black.ttf
+        - asset: res\fonts\roboto\Roboto-BlackItalic.ttf
+        - asset: res\fonts\roboto\Roboto-Bold.ttf
+        - asset: res\fonts\roboto\Roboto-BoldItalic.ttf
+        - asset: res\fonts\roboto\Roboto-Italic.ttf
+        - asset: res\fonts\roboto\Roboto-Light.ttf
+        - asset: res\fonts\roboto\Roboto-LightItalic.ttf
+        - asset: res\fonts\roboto\Roboto-Medium.ttf
+        - asset: res\fonts\roboto\Roboto-MediumItalic.ttf
+        - asset: res\fonts\roboto\Roboto-Regular.ttf
+        - asset: res\fonts\roboto\Roboto-Thin.ttf
+        - asset: res\fonts\roboto\Roboto-ThinItalic.ttf
