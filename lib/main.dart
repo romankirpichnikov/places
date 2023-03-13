@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/screens/visiting_screen.dart';
+import 'package:places/mocks.dart';
+import 'package:places/ui/screens/sight_list_screen.dart';
+import 'package:places/ui/widgets/bottom_navigator.dart';
 
 void main() {
   runApp(const App());
@@ -15,7 +17,13 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const VisitingScreen(),
+      home: DefaultTabController(
+        child: Scaffold(
+          body: SightListScreen(sights: mocks),
+          bottomNavigationBar: const BottomNavigation(),
+        ),
+        length: 2,
+      ),
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/tab_data.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screens/sight_list_screen.dart';
+import 'package:places/ui/widgets/bottom_navigator.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/custom_tab_bar.dart';
+import 'package:places/ui/widgets/favorities/planned_to_visit.dart';
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({super.key});
@@ -46,45 +46,11 @@ class _VisitingScreenState extends State<VisitingScreen> {
         ),
         body: TabBarView(
           children: tabData
-              .map((data) => SightListScreen(sights: data.sights))
+              .map((data) => PlannedToVisit(sight: data.sights[0]))
               .toList(),
         ),
         bottomNavigationBar: const BottomNavigation(),
       ),
-    );
-  }
-}
-
-class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      currentIndex: 2,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: [
-        BottomNavigationBarItem(
-          label: '',
-          icon: SvgPicture.asset('res/icons/list.svg'),
-        ),
-        BottomNavigationBarItem(
-          label: '',
-          icon: SvgPicture.asset('res/icons/map.svg'),
-        ),
-        BottomNavigationBarItem(
-          label: '',
-          icon: SvgPicture.asset('res/icons/favorite.svg'),
-        ),
-        BottomNavigationBarItem(
-          label: '',
-          icon: SvgPicture.asset('res/icons/settings.svg'),
-        ),
-      ],
     );
   }
 }
