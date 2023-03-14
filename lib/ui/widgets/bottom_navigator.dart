@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -66,11 +67,4 @@ enum AppTab {
   map,
   favorite,
   settings,
-}
-
-class AppIcons {
-  static const String list = 'res/icons/list.svg';
-  static const String map = 'res/icons/map.svg';
-  static const String favorite = 'res/icons/favorite.svg';
-  static const String settings = 'res/icons/settings.svg';
 }

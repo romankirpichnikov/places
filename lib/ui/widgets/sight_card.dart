@@ -1,14 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/sight_details_card.dart';
-
 import 'package:places/utils/loading_builder.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
+  final List<Widget> actions;
 
-  const SightCard({super.key, required this.sight});
+  const SightCard({
+    Key? key,
+    required this.sight,
+    required this.actions,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +61,8 @@ class SightCard extends StatelessWidget {
                                 sight.type.name,
                                 style: const TextStyle(color: Colors.white),
                               ),
-                              Container(
-                                width: 20,
-                                height: 20,
-                                color: Colors.redAccent,
+                              Row(
+                                children: actions,
                               ),
                             ],
                           ),
