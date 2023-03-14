@@ -5,6 +5,7 @@ import 'package:places/mocks.dart';
 import 'package:places/ui/widgets/bottom_navigator.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/custom_tab_bar.dart';
+import 'package:places/ui/widgets/favorities/empty.dart';
 import 'package:places/ui/widgets/favorities/planned_to_visit.dart';
 import 'package:places/ui/widgets/favorities/visited.dart';
 
@@ -31,6 +32,12 @@ class _VisitingScreenState extends State<VisitingScreen> {
       ),
     ];
 
+    final tabDataViewMaping = tabData.map((data) {
+      return data.title == tabData.first.title
+          ? PlannedToVisit(sights: data.sights)
+          : Visited(sights: data.sights);
+    }).toList();
+
     return DefaultTabController(
       length: tabData.length,
       child: Scaffold(
@@ -46,11 +53,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
           bottom: CustomTabBar(tabData: tabData),
         ),
         body: TabBarView(
-          children: tabData
-              .map((data) => data.title == tabData.first.title
-                  ? PlannedToVisit(sights: data.sights)
-                  : Visited(sights: data.sights))
-              .toList(),
+          children: tabDataViewMaping,
         ),
         bottomNavigationBar: const BottomNavigation(),
       ),

@@ -7,4 +7,6 @@ class AppIcons {
   static const String calendar = 'res/icons/calendar.svg';
   static const String cross = 'res/icons/cross.svg';
   static const String share = 'res/icons/share.svg';
+  static const String camera = 'res/icons/camera.svg';
+  static const String goRoute = 'res/icons/go_route.svg';
 }

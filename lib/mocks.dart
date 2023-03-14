@@ -45,7 +45,7 @@ Sight sight3 = Sight(
       'Один из самых известных оперных театров в мире, расположенный на побережье Сиднея',
   type: SightType.culture,
   workingHours: 'закрыто до 09:00',
-  visited: false,
+  visited: true,
 );
 
 Sight sight4 = Sight(
@@ -57,7 +57,7 @@ Sight sight4 = Sight(
   details: 'Шедевр Леонардо да Винчи, находящийся в Лувре в Париже',
   type: SightType.art,
   workingHours: 'закрыто до 09:00',
-  visited: false,
+  visited: true,
 );
 
 Sight sight5 = Sight(
@@ -69,5 +69,5 @@ Sight sight5 = Sight(
   details: 'Огромный каньон в Северной Америке, расположенный в штате Аризона',
   type: SightType.nature,
   workingHours: 'закрыто до 09:00',
-  visited: false,
+  visited: true,
 );
