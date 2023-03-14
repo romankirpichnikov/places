@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:places/custom_app_bar.dart';
-import 'package:places/mocks.dart';
-import 'package:places/ui/sight_card.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:places/constants/domain/app_icons.dart';
+import 'package:places/domain/sight.dart';
+import 'package:places/ui/widgets/custom_app_bar.dart';
+import 'package:places/ui/widgets/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
-  const SightListScreen({super.key});
+  final List<Sight> sights;
+  const SightListScreen({super.key, required this.sights});
 
   @override
   State<SightListScreen> createState() => _SightListScreenState();
@@ -21,8 +24,13 @@ class _SightListScreenState extends State<SightListScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10),
         child: Column(
-          children: mocks.map((sight) {
-            return SightCard(sight: sight);
+          children: widget.sights.map((sight) {
+            return SightCard(
+              sight: sight,
+              actions: [
+                SvgPicture.asset(AppIcons.heart),
+              ],
+            );
           }).toList(),
         ),
       ),

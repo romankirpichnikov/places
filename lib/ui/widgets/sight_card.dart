@@ -1,14 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/ui/sight_details_card.dart';
-
+import 'package:places/ui/widgets/sight_details_card.dart';
 import 'package:places/utils/loading_builder.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
+  final List<Widget> actions;
+  final Widget? content;
 
-  const SightCard({super.key, required this.sight});
+  const SightCard({
+    Key? key,
+    required this.sight,
+    required this.actions,
+    this.content,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +43,7 @@ class SightCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 100,
+                height: 120,
                 child: Stack(
                   children: [
                     Image.network(
@@ -55,10 +63,8 @@ class SightCard extends StatelessWidget {
                                 sight.type.name,
                                 style: const TextStyle(color: Colors.white),
                               ),
-                              Container(
-                                width: 20,
-                                height: 20,
-                                color: Colors.redAccent,
+                              Row(
+                                children: actions,
                               ),
                             ],
                           ),
@@ -70,6 +76,14 @@ class SightCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(8.0),
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
+                  color: Color.fromRGBO(245, 245, 245, 1),
+                ),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
                   child: Column(
@@ -82,9 +96,12 @@ class SightCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 5),
+                      if (content != null) ...[
+                        content!,
+                      ],
+                      const SizedBox(height: 10),
                       Text(
-                        sight.details,
+                        sight.workingHours,
                         maxLines: 2,
                         style: const TextStyle(
                           color: Colors.grey,
