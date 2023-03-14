@@ -32,7 +32,7 @@ Sight sight2 = Sight(
       'Древний инканский город, расположенный на высоте 2,4 тысяч метров в горах Анды',
   type: SightType.history,
   workingHours: 'закрыто до 09:00',
-  visited: false,
+  visited: true,
 );
 
 Sight sight3 = Sight(

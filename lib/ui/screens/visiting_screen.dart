@@ -6,6 +6,7 @@ import 'package:places/ui/widgets/bottom_navigator.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/custom_tab_bar.dart';
 import 'package:places/ui/widgets/favorities/planned_to_visit.dart';
+import 'package:places/ui/widgets/favorities/visited.dart';
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({super.key});
@@ -46,7 +47,9 @@ class _VisitingScreenState extends State<VisitingScreen> {
         ),
         body: TabBarView(
           children: tabData
-              .map((data) => PlannedToVisit(sight: data.sights[0]))
+              .map((data) => data.title == tabData.first.title
+                  ? PlannedToVisit(sights: data.sights)
+                  : Visited(sights: data.sights))
               .toList(),
         ),
         bottomNavigationBar: const BottomNavigation(),

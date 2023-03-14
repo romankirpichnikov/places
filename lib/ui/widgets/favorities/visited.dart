@@ -4,10 +4,10 @@ import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/sight_card.dart';
 
-class PlannedToVisit extends StatelessWidget {
+class Visited extends StatelessWidget {
   final List<Sight> sights;
 
-  const PlannedToVisit({Key? key, required this.sights}) : super(key: key);
+  const Visited({Key? key, required this.sights}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class PlannedToVisit extends StatelessWidget {
             actions: [
               Container(
                 margin: const EdgeInsets.only(right: 15),
-                child: SvgPicture.asset(AppIcons.calendar),
+                child: SvgPicture.asset(AppIcons.share),
               ),
               SizedBox(
                 width: 26,
