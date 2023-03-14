@@ -19,7 +19,7 @@ Sight sight1 = Sight(
       'Символ Франции, одна из самых известных достопримечательностей мира',
   type: SightType.architecture,
   workingHours: 'закрыто до 09:00',
-  visited: true,
+  visited: false,
 );
 
 Sight sight2 = Sight(

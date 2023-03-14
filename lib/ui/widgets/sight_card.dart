@@ -9,11 +9,13 @@ import 'package:places/utils/loading_builder.dart';
 class SightCard extends StatelessWidget {
   final Sight sight;
   final List<Widget> actions;
+  final Widget? content;
 
   const SightCard({
     Key? key,
     required this.sight,
     required this.actions,
+    this.content,
   }) : super(key: key);
 
   @override
@@ -86,16 +88,12 @@ class SightCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      if (content != null) ...[
+                        content!,
+                      ],
+                      const SizedBox(height: 10),
                       Text(
-                        sight.visitedDate(),
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        sight.details,
+                        sight.workingHours,
                         maxLines: 2,
                         style: const TextStyle(
                           color: Colors.grey,

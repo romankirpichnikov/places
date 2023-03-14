@@ -36,6 +36,15 @@ class Visited extends StatelessWidget {
                 child: SvgPicture.asset(AppIcons.cross),
               ),
             ],
+            content: Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                sight.visitedDate(),
+                style: const TextStyle(
+                  color: Color.fromRGBO(124, 126, 146, 1),
+                ),
+              ),
+            ),
           );
         }).toList(),
       ),

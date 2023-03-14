@@ -36,6 +36,13 @@ class PlannedToVisit extends StatelessWidget {
                 child: SvgPicture.asset(AppIcons.cross),
               ),
             ],
+            content: Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                sight.planedDate(),
+                style: const TextStyle(color: Colors.green),
+              ),
+            ),
           );
         }).toList(),
       ),
