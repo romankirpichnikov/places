@@ -43,7 +43,7 @@ class SightCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 100,
+                height: 120,
                 child: Stack(
                   children: [
                     Image.network(
@@ -76,6 +76,14 @@ class SightCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(8.0),
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
+                  color: Color.fromRGBO(245, 245, 245, 1),
+                ),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
                   child: Column(
