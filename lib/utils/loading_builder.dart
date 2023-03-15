@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/domain/app_strings.dart';
 
 Widget loadingBuilder(
   BuildContext context,
@@ -19,7 +20,7 @@ Widget loadingBuilder(
       children: [
         CircularProgressIndicator(value: progress),
         const SizedBox(height: 8),
-        Text('Загрузка $loadedPercent %'),
+        Text('${AppStrings.loading} $loadedPercent %'),
       ],
     ),
   );

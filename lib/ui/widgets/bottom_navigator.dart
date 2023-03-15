@@ -3,6 +3,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
 
+enum AppTab {
+  home,
+  map,
+  favorite,
+  settings,
+}
+
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({
     super.key,
@@ -60,11 +67,4 @@ class _BottomNavigationState extends State<BottomNavigation> {
       );
     }
   }
-}
-
-enum AppTab {
-  home,
-  map,
-  favorite,
-  settings,
 }

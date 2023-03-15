@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
+import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/favorities/empty.dart';
 import 'package:places/ui/widgets/sight_card.dart';
@@ -15,7 +17,7 @@ class Visited extends StatelessWidget {
     if (sights.isEmpty) {
       return Empty(
         icon: SvgPicture.asset(AppIcons.goRoute),
-        text: 'Завершите маршрут, чтобы место попало сюда.',
+        text: AppStrings.completeRoute,
       );
     }
 
@@ -41,7 +43,7 @@ class Visited extends StatelessWidget {
               child: Text(
                 sight.visitedDate(),
                 style: const TextStyle(
-                  color: Color.fromRGBO(124, 126, 146, 1),
+                  color: AppColors.textBase,
                 ),
               ),
             ),

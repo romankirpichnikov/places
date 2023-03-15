@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
+import 'package:places/constants/domain/app_strings.dart';
+import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/sight_card.dart';
@@ -47,23 +50,18 @@ class AppBarTitleSightList extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: const TextSpan(
-        style: TextStyle(
-          color: Colors.black,
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w700,
-          fontSize: 32,
-        ),
+        style: AppTextStyles.mainTitle,
         children: [
           TextSpan(
-            text: 'С',
-            style: TextStyle(color: Colors.green),
+            text: AppStrings.sightListTitlePart1,
+            style: TextStyle(color: AppColors.green),
           ),
-          TextSpan(text: 'писок\n'),
+          TextSpan(text: AppStrings.sightListTitlePart2),
           TextSpan(
-            text: 'и',
-            style: TextStyle(color: Colors.yellow),
+            text: AppStrings.sightListTitlePart3,
+            style: TextStyle(color: AppColors.yellow),
           ),
-          TextSpan(text: 'нтересных мест'),
+          TextSpan(text: AppStrings.sightListTitlePart4),
         ],
       ),
     );

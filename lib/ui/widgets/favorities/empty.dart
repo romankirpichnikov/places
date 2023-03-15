@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/domain/app_strings.dart';
+import 'package:places/constants/domain/app_text_styles.dart';
 
 class Empty extends StatelessWidget {
   final Widget icon;
@@ -13,30 +15,20 @@ class Empty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const inactiveColor = Color.fromRGBO(124, 126, 146, 0.56);
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         icon,
         const SizedBox(height: 20),
-        const Text(
-          'Пусто',
-          style: TextStyle(
-            fontSize: 20,
-            color: inactiveColor,
-          ),
+        Text(
+          AppStrings.empty,
+          style: AppTextStyles.disabledTextBig,
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 14,
-            color: inactiveColor,
-            fontWeight: FontWeight.w400,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTextStyles.disabledTextSmall,
           textAlign: TextAlign.center,
         ),
       ],

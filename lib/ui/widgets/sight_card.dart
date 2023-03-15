@@ -1,5 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:places/constants/domain/app_colors.dart';
+import 'package:places/constants/domain/app_text_styles.dart';
 
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
@@ -82,7 +83,7 @@ class SightCard extends StatelessWidget {
                     bottomLeft: Radius.circular(15),
                     bottomRight: Radius.circular(15),
                   ),
-                  color: Color.fromRGBO(245, 245, 245, 1),
+                  color: AppColors.backgroundColor,
                 ),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
@@ -91,10 +92,7 @@ class SightCard extends StatelessWidget {
                     children: [
                       Text(
                         sight.name,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: AppTextStyles.baseTextBold,
                       ),
                       if (content != null) ...[
                         content!,
@@ -103,9 +101,7 @@ class SightCard extends StatelessWidget {
                       Text(
                         sight.workingHours,
                         maxLines: 2,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                        ),
+                        style: AppTextStyles.disabledTextSmall,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],

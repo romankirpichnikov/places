@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/domain/app_strings.dart';
+import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
@@ -34,10 +36,7 @@ class SightDetailsCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     sight.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 24,
-                    ),
+                    style: AppTextStyles.heavyWeightTitle,
                   ),
                 ),
                 Container(
@@ -46,19 +45,12 @@ class SightDetailsCard extends StatelessWidget {
                     children: [
                       Text(
                         sight.type.name,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        style: AppTextStyles.boldText,
                       ),
                       const SizedBox(width: 16),
                       Text(
                         sight.workingHours,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey,
-                        ),
+                        style: AppTextStyles.disabledTextSmall,
                       ),
                     ],
                   ),
@@ -67,10 +59,7 @@ class SightDetailsCard extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 24.0, left: 8.0),
                   child: Text(
                     sight.details,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: AppTextStyles.baseText,
                   ),
                 ),
                 Container(
@@ -84,7 +73,7 @@ class SightDetailsCard extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.green,
                   ),
-                  child: const Center(child: Text('Построить маршрут')),
+                  child: const Center(child: Text(AppStrings.buildRoute)),
                 ),
                 const SizedBox(height: 5),
                 const Divider(
@@ -102,14 +91,14 @@ class SightDetailsCard extends StatelessWidget {
                       height: 40,
                       child: Center(
                         child: Text(
-                          'Запланировать',
+                          AppStrings.toDoPlane,
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 164,
                       height: 40,
-                      child: Center(child: Text('В избранное')),
+                      child: Center(child: Text(AppStrings.toFavorite)),
                     ),
                   ],
                 ),

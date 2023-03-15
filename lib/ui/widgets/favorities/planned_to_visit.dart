@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
+import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/favorities/empty.dart';
 import 'package:places/ui/widgets/sight_card.dart';
@@ -15,7 +16,7 @@ class PlannedToVisit extends StatelessWidget {
     if (sights.isEmpty) {
       return Empty(
         icon: SvgPicture.asset(AppIcons.camera),
-        text: 'Отмечайте понравившиеся места и они появиятся здесь.',
+        text: AppStrings.markFavoritePlaces,
       );
     }
 
