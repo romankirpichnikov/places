@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/tab_data.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/widgets/bottom_navigator.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/custom_tab_bar.dart';
 import 'package:places/ui/widgets/favorities/planned_to_visit.dart';
@@ -53,7 +51,6 @@ class _VisitingScreenState extends State<VisitingScreen> {
         body: TabBarView(
           children: tabDataViewMaping,
         ),
-        bottomNavigationBar: const BottomNavigation(),
       ),
     );
   }
