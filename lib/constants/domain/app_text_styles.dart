@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/domain/app_colors.dart';
 
 class AppTextStyles {
-  static const mainTitle = TextStyle(
+  static const lMainTitle = TextStyle(
     color: AppColors.appBarHeader,
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w700,
@@ -17,11 +17,13 @@ class AppTextStyles {
     decoration: TextDecoration.none,
   );
 
+  static final dMainTitle = lMainTitle.copyWith(color: AppColors.white);
+
   static final baseTextBold = baseText.copyWith(
     fontWeight: FontWeight.w700,
   );
 
-  static final heavyWeightTitle = mainTitle.copyWith(
+  static final heavyWeightTitle = lMainTitle.copyWith(
     fontSize: 24,
   );
 

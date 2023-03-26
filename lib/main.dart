@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screens/map_screen.dart';
@@ -54,6 +51,8 @@ class _TabScreenState extends State<TabScreen>
 
   @override
   Widget build(BuildContext context) {
+    final customTheme = Theme.of(context).extension<CustomColors>();
+
     return Scaffold(
       body: TabBarView(
         controller: _tabController,
@@ -68,7 +67,6 @@ class _TabScreenState extends State<TabScreen>
         type: BottomNavigationBarType.fixed,
         currentIndex: _tabController.index,
         onTap: (index) {
-          log(Theme.of(context).extension<CustomColors>().toString());
           _tabController.animateTo(index);
         },
         items: [
@@ -76,28 +74,28 @@ class _TabScreenState extends State<TabScreen>
             label: '',
             icon: SvgPicture.asset(
               AppIcons.list,
-              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
+              color: customTheme?.buttonIcon,
             ),
           ),
           BottomNavigationBarItem(
             label: '',
             icon: SvgPicture.asset(
               AppIcons.map,
-              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
+              color: customTheme?.buttonIcon,
             ),
           ),
           BottomNavigationBarItem(
             label: '',
             icon: SvgPicture.asset(
               AppIcons.heart,
-              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
+              color: customTheme?.buttonIcon,
             ),
           ),
           BottomNavigationBarItem(
             label: '',
             icon: SvgPicture.asset(
               AppIcons.settings,
-              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
+              color: customTheme?.buttonIcon,
             ),
           ),
         ],

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
-import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/sight_card.dart';
@@ -20,8 +18,9 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: AppBarTitleSightList(),
+      appBar: CustomAppBar(
+        backgroundColor: Theme.of(context).canvasColor,
+        title: const AppBarTitleSightList(),
         centerTitle: false,
       ),
       body: SingleChildScrollView(
@@ -50,11 +49,10 @@ class AppBarTitleSightList extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: AppTextStyles.mainTitle,
-        children: [
+        style: Theme.of(context).textTheme.bodyLarge,
+        children: const [
           TextSpan(
             text: AppStrings.sightListTitlePart1,
-            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       ),

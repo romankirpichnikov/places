@@ -17,6 +17,7 @@ class AppTheme {
     ),
     textTheme: TextTheme(
       bodyMedium: AppTextStyles.baseTextBold,
+      bodyLarge: AppTextStyles.lMainTitle,
     ),
   );
 
@@ -34,6 +35,7 @@ class AppTheme {
     ),
     textTheme: TextTheme(
       bodyMedium: AppTextStyles.dBaseTextBold,
+      bodyLarge: AppTextStyles.dMainTitle,
     ),
   );
 
