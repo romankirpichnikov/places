@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
-
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screens/res/custom_color_scheme.dart';
 import 'package:places/ui/widgets/sight_details_card.dart';
 import 'package:places/utils/loading_builder.dart';
 
@@ -78,12 +77,14 @@ class SightCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8.0),
                 width: double.infinity,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(15),
                     bottomRight: Radius.circular(15),
                   ),
-                  color: AppColors.backgroundColor,
+                  color: Theme.of(context)
+                      .extension<CustomColors>()
+                      ?.cardbackground,
                 ),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
@@ -92,7 +93,7 @@ class SightCard extends StatelessWidget {
                     children: [
                       Text(
                         sight.name,
-                        style: AppTextStyles.baseTextBold,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       if (content != null) ...[
                         content!,

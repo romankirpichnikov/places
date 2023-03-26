@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/domain/tab_data.dart';
+import 'package:places/ui/screens/res/custom_color_scheme.dart';
 
 class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
   final List<TabData> tabData;
@@ -23,8 +24,8 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
         color: AppColors.backgroundColor,
       ),
       child: TabBar(
-        indicator: const BoxDecoration(
-          color: AppColors.indicatorColor,
+        indicator: BoxDecoration(
+          color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
           borderRadius: borderRadius,
         ),
         unselectedLabelColor: AppColors.inactiveColor,

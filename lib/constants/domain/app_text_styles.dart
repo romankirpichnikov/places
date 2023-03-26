@@ -40,4 +40,8 @@ class AppTextStyles {
   static final boldText = baseText.copyWith(
     fontWeight: FontWeight.w700,
   );
+
+  static final dBaseTextBold = baseTextBold.copyWith(
+    color: AppColors.white,
+  );
 }

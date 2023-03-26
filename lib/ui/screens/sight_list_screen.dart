@@ -25,7 +25,7 @@ class _SightListScreenState extends State<SightListScreen> {
         centerTitle: false,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: widget.sights.map((sight) {
             return SightCard(
@@ -49,19 +49,13 @@ class AppBarTitleSightList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: const TextSpan(
+      text: TextSpan(
         style: AppTextStyles.mainTitle,
         children: [
           TextSpan(
             text: AppStrings.sightListTitlePart1,
-            style: TextStyle(color: AppColors.green),
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
-          TextSpan(text: AppStrings.sightListTitlePart2),
-          TextSpan(
-            text: AppStrings.sightListTitlePart3,
-            style: TextStyle(color: AppColors.yellow),
-          ),
-          TextSpan(text: AppStrings.sightListTitlePart4),
         ],
       ),
     );

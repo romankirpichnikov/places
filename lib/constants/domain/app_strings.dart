@@ -1,9 +1,6 @@
 class AppStrings {
   // Colored title
-  static const sightListTitlePart1 = 'С';
-  static const sightListTitlePart2 = 'писок\n';
-  static const sightListTitlePart3 = 'и';
-  static const sightListTitlePart4 = 'нтересных мест';
+  static const sightListTitlePart1 = 'Список\nинтересных мест';
 
   //Tab bar
   static const visitingScreenTitle = 'Избраное';

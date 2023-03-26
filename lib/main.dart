@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screens/map_screen.dart';
+import 'package:places/ui/screens/res/custom_color_scheme.dart';
 import 'package:places/ui/screens/res/themes.dart';
 import 'package:places/ui/screens/settings_screen.dart';
 import 'package:places/ui/screens/sight_list_screen.dart';
@@ -17,8 +21,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TabScreen(),
+    return MaterialApp(
+      theme: AppTheme.isDark ? AppTheme.dark : AppTheme.light,
+      home: const TabScreen(),
     );
   }
 }
@@ -49,43 +54,53 @@ class _TabScreenState extends State<TabScreen>
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.isDark ? AppTheme.dark : AppTheme.light,
-      home: Scaffold(
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            SightListScreen(sights: mocks),
-            const MapScreen(),
-            const VisitingScreen(),
-            const SettingsScreen(),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _tabController.index,
-          onTap: (index) {
-            _tabController.animateTo(index);
-          },
-          items: [
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset(AppIcons.list, color: Colors.white),
+    return Scaffold(
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          SightListScreen(sights: mocks),
+          const MapScreen(),
+          const VisitingScreen(),
+          const SettingsScreen(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _tabController.index,
+        onTap: (index) {
+          log(Theme.of(context).extension<CustomColors>().toString());
+          _tabController.animateTo(index);
+        },
+        items: [
+          BottomNavigationBarItem(
+            label: '',
+            icon: SvgPicture.asset(
+              AppIcons.list,
+              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
             ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset(AppIcons.map, color: Colors.white),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: SvgPicture.asset(
+              AppIcons.map,
+              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
             ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset(AppIcons.heart, color: Colors.white),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: SvgPicture.asset(
+              AppIcons.heart,
+              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
             ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: SvgPicture.asset(AppIcons.settings, color: Colors.white),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            icon: SvgPicture.asset(
+              AppIcons.settings,
+              color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
