@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/domain/app_strings.dart';
-import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/tab_data.dart';
 import 'package:places/mocks.dart';

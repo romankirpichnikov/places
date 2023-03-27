@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/domain/sight.dart';
@@ -42,9 +41,7 @@ class Visited extends StatelessWidget {
               padding: const EdgeInsets.only(top: 4.0),
               child: Text(
                 sight.visitedDate(),
-                style: const TextStyle(
-                  color: AppColors.textBase,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
           );

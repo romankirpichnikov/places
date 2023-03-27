@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/constants/domain/sight_types.dart';
@@ -76,7 +77,12 @@ class SightDetailsCard extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.green,
                   ),
-                  child: const Center(child: Text(AppStrings.buildRoute)),
+                  child: const Center(
+                    child: Text(
+                      AppStrings.buildRoute,
+                      style: TextStyle(color: AppColors.white),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 5),
                 const Divider(

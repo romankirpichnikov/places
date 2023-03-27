@@ -9,7 +9,7 @@ class AppColors {
 
   static const appBackground = white;
   static const backgroundColor = Color.fromRGBO(245, 245, 245, 1);
-  static const textBase = Color.fromRGBO(59, 62, 91, 1);
+  static const lTextBase = Color.fromRGBO(59, 62, 91, 1);
   static const appBarHeader = Color.fromRGBO(37, 40, 73, 1);
   static const lBottomIcon = appBarHeader;
   static const lCardBacground = backgroundColor;
@@ -23,4 +23,5 @@ class AppColors {
   static const dbottonIcons = white;
   static const dCardBacground = Color.fromRGBO(26, 26, 32, 1);
   static const dFavoriteBackground = Color.fromRGBO(26, 26, 32, 1);
+  static const dTextBase = white;
 }
