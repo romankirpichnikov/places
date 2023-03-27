@@ -3,6 +3,7 @@ import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screens/res/custom_color_scheme.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/utils/loading_builder.dart';
 
@@ -15,6 +16,8 @@ class SightDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customTheme = Theme.of(context).extension<CustomColors>();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -36,7 +39,7 @@ class SightDetailsCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     sight.name,
-                    style: AppTextStyles.lHeavyWeightTitle,
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
                 Container(
@@ -45,7 +48,7 @@ class SightDetailsCard extends StatelessWidget {
                     children: [
                       Text(
                         sight.type.name,
-                        style: AppTextStyles.boldText,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 16),
                       Text(
@@ -59,7 +62,7 @@ class SightDetailsCard extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 24.0, left: 8.0),
                   child: Text(
                     sight.details,
-                    style: AppTextStyles.baseText,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
                 Container(
@@ -112,15 +115,15 @@ class SightDetailsCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 8, top: 20, bottom: 15),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
+                    color: customTheme?.cardbackground,
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   child: IconButton(
                     onPressed: () => Navigator.pop(context),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_back_ios_new,
                       size: 20,
-                      color: Colors.black,
+                      color: customTheme?.buttonIcon,
                     ),
                   ),
                 ),

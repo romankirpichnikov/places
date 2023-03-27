@@ -30,7 +30,7 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
           color: customTheme?.buttonIcon,
           borderRadius: borderRadius,
         ),
-        labelColor: AppColors.indicatorColor,
+        labelColor: customTheme?.favoriteBackground,
         unselectedLabelColor: AppColors.inactiveColor,
         labelStyle: AppTextStyles.boldText,
         tabs: tabData
