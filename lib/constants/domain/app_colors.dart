@@ -15,10 +15,12 @@ class AppColors {
   static const lCardBacground = backgroundColor;
   static const inactiveColor = Color.fromRGBO(124, 126, 146, 0.56);
   static const indicatorColor = Color.fromRGBO(59, 62, 91, 1);
+  static const lFavoriteBackground = backgroundColor;
 
   // // dark theme colors
   static const dBaseColor = Color(0xFF21222C);
   static const dBottomIcon = white;
   static const dbottonIcons = white;
   static const dCardBacground = Color.fromRGBO(26, 26, 32, 1);
+  static const dFavoriteBackground = Color.fromRGBO(26, 26, 32, 1);
 }

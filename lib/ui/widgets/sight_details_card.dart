@@ -36,7 +36,7 @@ class SightDetailsCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     sight.name,
-                    style: AppTextStyles.heavyWeightTitle,
+                    style: AppTextStyles.lHeavyWeightTitle,
                   ),
                 ),
                 Container(

@@ -42,9 +42,10 @@ class _VisitingScreenState extends State<VisitingScreen> {
       length: tabData.length,
       child: Scaffold(
         appBar: CustomAppBar(
+          backgroundColor: Theme.of(context).canvasColor,
           title: Text(
             AppStrings.visitingScreenTitle,
-            style: AppTextStyles.heavyWeightTitle,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           bottom: CustomTabBar(tabData: tabData),
         ),

@@ -9,14 +9,10 @@ class AppTheme {
       CustomColors.light,
     ],
     canvasColor: AppColors.backgroundColor,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.backgroundColor,
-      unselectedItemColor: AppColors.white,
-      unselectedIconTheme: IconThemeData(color: AppColors.green),
-      selectedIconTheme: IconThemeData(color: AppColors.white),
-    ),
+    scaffoldBackgroundColor: AppColors.backgroundColor,
     textTheme: TextTheme(
       bodyMedium: AppTextStyles.baseTextBold,
+      headlineMedium: AppTextStyles.lHeavyWeightTitle,
       bodyLarge: AppTextStyles.lMainTitle,
     ),
   );
@@ -27,14 +23,9 @@ class AppTheme {
     ],
     scaffoldBackgroundColor: AppColors.dBaseColor,
     canvasColor: AppColors.dBaseColor,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.dBaseColor,
-      unselectedItemColor: AppColors.white,
-      unselectedIconTheme: IconThemeData(color: AppColors.green),
-      selectedIconTheme: IconThemeData(color: AppColors.white),
-    ),
     textTheme: TextTheme(
       bodyMedium: AppTextStyles.dBaseTextBold,
+      headlineMedium: AppTextStyles.dHeavyWeightTitle,
       bodyLarge: AppTextStyles.dMainTitle,
     ),
   );

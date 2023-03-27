@@ -23,8 +23,12 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
   );
 
-  static final heavyWeightTitle = lMainTitle.copyWith(
-    fontSize: 24,
+  static final lHeavyWeightTitle = lMainTitle.copyWith(
+    fontSize: 20,
+  );
+
+  static final dHeavyWeightTitle = lHeavyWeightTitle.copyWith(
+    color: AppColors.white,
   );
 
   static final disabledTextBig = baseText.copyWith(

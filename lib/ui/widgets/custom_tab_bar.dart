@@ -17,17 +17,20 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
     const maxWidth = 390.0;
     const borderRadius = BorderRadius.all(Radius.circular(20));
 
+    final customTheme = Theme.of(context).extension<CustomColors>();
+
     return Container(
       constraints: const BoxConstraints(maxWidth: maxWidth),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         borderRadius: borderRadius,
-        color: AppColors.backgroundColor,
+        color: customTheme?.favoriteBackground,
       ),
       child: TabBar(
         indicator: BoxDecoration(
-          color: Theme.of(context).extension<CustomColors>()?.buttonIcon,
+          color: customTheme?.buttonIcon,
           borderRadius: borderRadius,
         ),
+        labelColor: AppColors.indicatorColor,
         unselectedLabelColor: AppColors.inactiveColor,
         labelStyle: AppTextStyles.boldText,
         tabs: tabData
