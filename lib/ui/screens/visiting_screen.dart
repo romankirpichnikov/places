@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:places/constants/domain/app_strings.dart';
-import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/tab_data.dart';
 import 'package:places/mocks.dart';
@@ -42,9 +41,10 @@ class _VisitingScreenState extends State<VisitingScreen> {
       length: tabData.length,
       child: Scaffold(
         appBar: CustomAppBar(
+          backgroundColor: Theme.of(context).canvasColor,
           title: Text(
             AppStrings.visitingScreenTitle,
-            style: AppTextStyles.heavyWeightTitle,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           bottom: CustomTabBar(tabData: tabData),
         ),

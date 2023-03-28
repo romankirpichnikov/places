@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screens/map_screen.dart';
+import 'package:places/ui/screens/res/custom_color_scheme.dart';
+import 'package:places/ui/screens/res/themes.dart';
 import 'package:places/ui/screens/settings_screen.dart';
 import 'package:places/ui/screens/sight_list_screen.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
@@ -17,10 +19,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Places',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.isDark ? AppTheme.dark : AppTheme.light,
       home: const TabScreen(),
     );
   }
@@ -52,6 +51,8 @@ class _TabScreenState extends State<TabScreen>
 
   @override
   Widget build(BuildContext context) {
+    final customTheme = Theme.of(context).extension<CustomColors>();
+
     return Scaffold(
       body: TabBarView(
         controller: _tabController,
@@ -64,8 +65,6 @@ class _TabScreenState extends State<TabScreen>
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
         currentIndex: _tabController.index,
         onTap: (index) {
           _tabController.animateTo(index);
@@ -73,19 +72,31 @@ class _TabScreenState extends State<TabScreen>
         items: [
           BottomNavigationBarItem(
             label: '',
-            icon: SvgPicture.asset(AppIcons.list),
+            icon: SvgPicture.asset(
+              AppIcons.list,
+              color: customTheme?.buttonIcon,
+            ),
           ),
           BottomNavigationBarItem(
             label: '',
-            icon: SvgPicture.asset(AppIcons.map),
+            icon: SvgPicture.asset(
+              AppIcons.map,
+              color: customTheme?.buttonIcon,
+            ),
           ),
           BottomNavigationBarItem(
             label: '',
-            icon: SvgPicture.asset(AppIcons.favorite),
+            icon: SvgPicture.asset(
+              AppIcons.heart,
+              color: customTheme?.buttonIcon,
+            ),
           ),
           BottomNavigationBarItem(
             label: '',
-            icon: SvgPicture.asset(AppIcons.settings),
+            icon: SvgPicture.asset(
+              AppIcons.settings,
+              color: customTheme?.buttonIcon,
+            ),
           ),
         ],
       ),

@@ -2,30 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:places/constants/domain/app_colors.dart';
 
 class AppTextStyles {
-  static const mainTitle = TextStyle(
+  static const lMainTitle = TextStyle(
     color: AppColors.appBarHeader,
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w700,
     fontSize: 34,
   );
 
-  static const baseText = TextStyle(
+  static const lBaseText = TextStyle(
     fontFamily: 'Roboto',
     fontSize: 14,
-    color: AppColors.textBase,
+    color: AppColors.lTextBase,
     fontWeight: FontWeight.w400,
     decoration: TextDecoration.none,
   );
 
-  static final baseTextBold = baseText.copyWith(
+  static final dBaseText = lBaseText.copyWith(
+    color: AppColors.dTextBase,
+  );
+
+  static final dMainTitle = lMainTitle.copyWith(color: AppColors.white);
+
+  static final baseTextBold = lBaseText.copyWith(
     fontWeight: FontWeight.w700,
   );
 
-  static final heavyWeightTitle = mainTitle.copyWith(
-    fontSize: 24,
+  static final lHeavyWeightTitle = lMainTitle.copyWith(
+    fontSize: 20,
   );
 
-  static final disabledTextBig = baseText.copyWith(
+  static final dHeavyWeightTitle = lHeavyWeightTitle.copyWith(
+    color: AppColors.white,
+  );
+
+  static final disabledTextBig = lBaseText.copyWith(
     color: AppColors.inactiveColor,
     fontSize: 20,
   );
@@ -37,7 +47,11 @@ class AppTextStyles {
     decoration: TextDecoration.none,
   );
 
-  static final boldText = baseText.copyWith(
+  static final boldText = lBaseText.copyWith(
     fontWeight: FontWeight.w700,
+  );
+
+  static final dBaseTextBold = baseTextBold.copyWith(
+    color: AppColors.white,
   );
 }
