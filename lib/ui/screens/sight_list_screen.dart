@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/widgets/buttons/custom_botton.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/ui/widgets/sight_card.dart';
 
@@ -32,16 +33,12 @@ class _SightListScreenState extends State<SightListScreen> {
             return SightCard(
               sight: sight,
               actions: [
-                OutlinedButton.icon(
+                CustomBotton(
                   onPressed: () {
                     log('Presseed on favorites button ${sight.name}');
                   },
                   icon: SvgPicture.asset(AppIcons.heart),
                   label: const Text(''),
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide.none,
-                    visualDensity: VisualDensity.compact,
-                  ),
                 ),
               ],
             );
