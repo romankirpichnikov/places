@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
@@ -30,7 +32,17 @@ class _SightListScreenState extends State<SightListScreen> {
             return SightCard(
               sight: sight,
               actions: [
-                SvgPicture.asset(AppIcons.heart),
+                OutlinedButton.icon(
+                  onPressed: () {
+                    log('Presseed on favorites button ${sight.name}');
+                  },
+                  icon: SvgPicture.asset(AppIcons.heart),
+                  label: const Text(''),
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide.none,
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
               ],
             );
           }).toList(),
