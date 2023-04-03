@@ -20,7 +20,7 @@ class FlatButton extends CustomBotton {
       onPressed: onPressed,
       icon: icon,
       label: label,
-      style: ElevatedButton.styleFrom(
+      style: OutlinedButton.styleFrom(
         side: BorderSide.none,
         visualDensity: VisualDensity.compact,
       ),
