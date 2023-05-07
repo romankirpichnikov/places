@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/constants/domain/app_text_styles.dart';

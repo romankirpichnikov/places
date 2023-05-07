@@ -7,6 +7,7 @@ import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/widgets/buttons/flat_button.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
+import 'package:places/ui/widgets/search_field.dart';
 import 'package:places/ui/widgets/sight_card.dart';
 
 class SightListScreen extends StatefulWidget {
@@ -26,23 +27,34 @@ class _SightListScreenState extends State<SightListScreen> {
         title: const AppBarTitleSightList(),
         centerTitle: false,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: widget.sights.map((sight) {
-            return SightCard(
-              sight: sight,
-              actions: [
-                FlatButton(
-                  onPressed: () {
-                    log('Presseed on favorites button ${sight.name}');
-                  },
-                  icon: SvgPicture.asset(AppIcons.heart),
-                ),
-              ],
-            );
-          }).toList(),
-        ),
+      body: Column(
+        children: [
+          SearchField(),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  ...widget.sights.map(
+                    (sight) {
+                      return SightCard(
+                        sight: sight,
+                        actions: [
+                          FlatButton(
+                            onPressed: () {
+                              log('Presseed on favorites button ${sight.name}');
+                            },
+                            icon: SvgPicture.asset(AppIcons.heart),
+                          ),
+                        ],
+                      );
+                    },
+                  ).toList(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

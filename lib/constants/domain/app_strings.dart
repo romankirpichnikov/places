@@ -16,4 +16,5 @@ class AppStrings {
   static const toFavorite = 'В избранное';
   static const toDoPlane = 'Запланировать';
   static const loading = 'Загрузка';
+  static const serach = 'Поиск';
 }
