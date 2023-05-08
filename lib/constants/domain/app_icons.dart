@@ -10,4 +10,5 @@ class AppIcons {
   static const String camera = 'res/icons/camera.svg';
   static const String goRoute = 'res/icons/go_route.svg';
   static const String search = 'res/icons/search.svg';
+  static const String filter = 'res/icons/filter.svg';
 }
