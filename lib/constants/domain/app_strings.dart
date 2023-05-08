@@ -17,4 +17,5 @@ class AppStrings {
   static const toDoPlane = 'Запланировать';
   static const loading = 'Загрузка';
   static const serach = 'Поиск';
+  static const clear = 'Очистить';
 }
