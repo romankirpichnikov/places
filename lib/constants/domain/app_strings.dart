@@ -18,4 +18,9 @@ class AppStrings {
   static const loading = 'Загрузка';
   static const serach = 'Поиск';
   static const clear = 'Очистить';
+
+  //filters screen
+  static const categories = 'КАТЕГОРИИ';
+  static const distance = 'Расстояние';
+  static const shopwPlaces = 'Показать';
 }

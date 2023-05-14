@@ -44,7 +44,7 @@ class _SearchFieldState extends State<SearchField> {
               Navigator.push(
                 context,
                 MaterialPageRoute<FiltersScreen>(
-                  builder: (context) => FiltersScreen(),
+                  builder: (context) => const FiltersScreen(),
                 ),
               );
             },
