@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_strings.dart';
-import 'package:places/constants/domain/categories.dart';
+import 'package:places/mocks/categories.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 
 class FiltersScreen extends StatefulWidget {
@@ -12,13 +13,13 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  late List<bool> _selectedCategories;
+  final _allCategories = CategoriesData.categories;
+
   late RangeValues _rangeValues;
 
   @override
   void initState() {
     super.initState();
-    _selectedCategories = List<bool>.filled(Categories.values.length, false);
     _rangeValues = const RangeValues(100, 5000);
   }
 
@@ -32,7 +33,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          _buildClearButton(),
+          _ClearButton(onPressed: _clearSelectedCategories),
         ],
       ),
       body: Padding(
@@ -44,40 +45,87 @@ class _FiltersScreenState extends State<FiltersScreen> {
               'Categories',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 24),
             GridView.builder(
               shrinkWrap: true,
               physics: const ClampingScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                // childAspectRatio: 2.5,
-                crossAxisSpacing: 4,
-                // mainAxisSpacing: 4,
               ),
-              itemCount: Categories.values.length,
+              itemCount: _allCategories.length,
               itemBuilder: (context, index) {
-                final category = Categories.values[index];
-                final selected = _selectedCategories[index];
-
-                return CheckboxListTile(
-                  title: Text(category.name),
-                  value: selected,
-                  onChanged: (value) {
+                return GestureDetector(
+                  onTap: () {
                     setState(() {
-                      _selectedCategories[index] = value ?? false;
+                      _allCategories[index].isSelected =
+                          !_allCategories[index].isSelected;
                     });
                   },
-                  // secondary: selected
-                  //     ? Icon(Icons.check, color: Theme.of(context).canvasColor)
-                  //     : null,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: const BoxDecoration(
+                          color: AppColors.lCategoryBackground,
+                          borderRadius: BorderRadius.all(Radius.circular(60)),
+                        ),
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: SizedBox(
+                                height: 34,
+                                width: 34,
+                                child: SvgPicture.asset(
+                                  color: AppColors.lightGreen,
+                                  _allCategories[index].icon,
+                                ),
+                              ),
+                            ),
+                            if (_allCategories[index].isSelected)
+                              const Positioned(
+                                bottom: 3,
+                                right: 1,
+                                child: Icon(Icons.check_circle, size: 20),
+                              ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        _allCategories[index].name,
+                        // change style
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Distance',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            // extract to their own widget and correct spaces around text and slider
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Distance',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'от ${_formatDistance(_rangeValues.start)} ',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      'до ${_formatDistance(_rangeValues.end)}',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
             SliderTheme(
               data: SliderThemeData(
                 activeTrackColor: Theme.of(context).primaryColor,
@@ -101,24 +149,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _formatDistance(_rangeValues.start),
-                  style: TextStyle(fontSize: 16),
-                ),
-                Text(
-                  _formatDistance(_rangeValues.end),
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
+
             const SizedBox(height: 32),
-            Expanded(
+            const Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: _buildShowButton(),
+                child: _ShowBotton(),
               ),
             ),
           ],
@@ -135,14 +171,23 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   void _clearSelectedCategories() {
     setState(() {
-      _selectedCategories.fillRange(0, _selectedCategories.length, false);
+      for (final category in _allCategories) {
+        category.isSelected = false;
+      }
       _rangeValues = const RangeValues(100, 5000);
     });
   }
+}
 
-  Widget _buildClearButton() {
+class _ClearButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _ClearButton({Key? key, required this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return TextButton(
-      onPressed: _clearSelectedCategories,
+      onPressed: onPressed,
       child: const Text(
         AppStrings.clear,
         style: TextStyle(
@@ -151,8 +196,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
       ),
     );
   }
+}
 
-  Widget _buildShowButton() {
+class _ShowBotton extends StatelessWidget {
+  const _ShowBotton();
+
+  @override
+  Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
         //When we found places we need to show active button otherwise show inactive button

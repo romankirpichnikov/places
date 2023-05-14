@@ -11,4 +11,12 @@ class AppIcons {
   static const String goRoute = 'res/icons/go_route.svg';
   static const String search = 'res/icons/search.svg';
   static const String filter = 'res/icons/filter.svg';
+
+  //categories
+  static const String cafe = 'res/icons/categories/cafe.svg';
+  static const String hotel = 'res/icons/categories/hotel.svg';
+  static const String museum = 'res/icons/categories/museum.svg';
+  static const String park = 'res/icons/categories/park.svg';
+  static const String restaurant = 'res/icons/categories/restaurant.svg';
+  static const String specialPlace = 'res/icons/categories/special_place.svg';
 }

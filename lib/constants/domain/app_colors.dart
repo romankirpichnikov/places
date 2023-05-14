@@ -17,6 +17,9 @@ class AppColors {
   static const indicatorColor = Color.fromRGBO(59, 62, 91, 1);
   static const lFavoriteBackground = backgroundColor;
 
+  static const lightGreen = Color.fromRGBO(76, 175, 80, 1);
+  static const lCategoryBackground = Color.fromRGBO(76, 175, 80, 0.16);
+
   // // dark theme colors
   static const dBaseColor = Color(0xFF21222C);
   static const dBottomIcon = white;

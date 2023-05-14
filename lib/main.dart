@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
-import 'package:places/mocks.dart';
+import 'package:places/mocks/sights.dart';
 import 'package:places/ui/screens/map_screen.dart';
 import 'package:places/ui/screens/res/custom_color_scheme.dart';
 import 'package:places/ui/screens/res/themes.dart';
@@ -57,9 +57,9 @@ class _TabScreenState extends State<TabScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          SightListScreen(sights: mocks),
+          SightListScreen(sights: SightsData.sights),
           const MapScreen(),
-          const VisitingScreen(),
+          VisitingScreen(sights: SightsData.sights),
           const SettingsScreen(),
         ],
       ),
