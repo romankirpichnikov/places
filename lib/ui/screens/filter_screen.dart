@@ -1,9 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_colors.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/mocks/categories.dart';
+import 'package:places/mocks/sights.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 
 class FiltersScreen extends StatefulWidget {
@@ -15,6 +18,8 @@ class FiltersScreen extends StatefulWidget {
 
 class _FiltersScreenState extends State<FiltersScreen> {
   final _allCategories = CategoriesData.categories;
+  int _foundSightsCount = 0;
+  bool _isButtonActive = false;
 
   late RangeValues _rangeValues;
 
@@ -67,9 +72,13 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       Container(
                         width: 80,
                         height: 80,
-                        decoration: const BoxDecoration(
-                          color: AppColors.lCategoryBackground,
-                          borderRadius: BorderRadius.all(Radius.circular(60)),
+                        decoration: BoxDecoration(
+                          // what is
+                          color: _allCategories[index].isSelected
+                              ? AppColors.lCategoryBackground
+                              : AppColors.dFavoriteBackground,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(60)),
                         ),
                         child: Stack(
                           children: [
@@ -136,21 +145,27 @@ class _FiltersScreenState extends State<FiltersScreen> {
               child: RangeSlider(
                 values: _rangeValues,
                 min: 100, //100m
-                max: 100000, //100km or 30km reduce constraint?
+                max: 100000, //100km
                 divisions: 100,
                 onChanged: (values) {
                   setState(() {
                     _rangeValues = values;
                   });
                 },
+                onChangeEnd: (values) {
+                  _calculateNearbySightsButton();
+                },
               ),
             ),
 
             const SizedBox(height: 32),
-            const Expanded(
+            Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: _ShowBotton(),
+                child: _ShowBotton(
+                  foundSightsCount: _foundSightsCount,
+                  isButtonActive: _isButtonActive,
+                ),
               ),
             ),
           ],
@@ -165,12 +180,45 @@ class _FiltersScreenState extends State<FiltersScreen> {
         : '${distance.toStringAsFixed(0)} м';
   }
 
+  void _calculateNearbySightsButton() {
+    final sights = SightsData.sights;
+    const centerPoint = {'lat': 1, 'lng': 1}; // stub current position
+
+    const kilometersPerDegree = 40000 / 360;
+
+    final minDistanceKm = _rangeValues.start;
+    final maxDistanceKm = _rangeValues.end;
+
+    final xFactor =
+        math.cos(math.pi * centerPoint['lat']! / 180.0) * kilometersPerDegree;
+    var foundSights = 0;
+
+    for (final sight in sights) {
+      final xDistance = (centerPoint['lng']! - sight.lon).abs() * xFactor;
+      final yDistance =
+          (centerPoint['lat']! - sight.lat).abs() * kilometersPerDegree;
+      final distance = math.sqrt(xDistance * xDistance + yDistance * yDistance);
+
+      final isInRange = distance >= minDistanceKm && distance <= maxDistanceKm;
+
+      if (isInRange) {
+        foundSights++;
+      }
+    }
+
+    setState(() {
+      _foundSightsCount = foundSights;
+      _isButtonActive = foundSights > 0;
+    });
+  }
+
   void _clearSelectedCategories() {
     setState(() {
       for (final category in _allCategories) {
         category.isSelected = false;
       }
       _rangeValues = const RangeValues(100, 5000);
+      _calculateNearbySightsButton();
     });
   }
 }
@@ -186,6 +234,7 @@ class _ClearButton extends StatelessWidget {
       onPressed: onPressed,
       child: const Text(
         AppStrings.clear,
+        // add green colors
         style: TextStyle(
           fontWeight: FontWeight.normal,
         ),
@@ -195,28 +244,29 @@ class _ClearButton extends StatelessWidget {
 }
 
 class _ShowBotton extends StatelessWidget {
-  const _ShowBotton();
+  final bool isButtonActive;
+  final int foundSightsCount;
+
+  const _ShowBotton({
+    required this.isButtonActive,
+    required this.foundSightsCount,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // add dynamic calculation based on location
-    final amount = 190;
-
     return SizedBox(
       height: 48,
       width: 800,
       // size: const Size.fromHeight(48),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.green,
+          primary: isButtonActive ? Colors.green : Colors.grey,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),
-        onPressed: () {
-          //When we found places we need to show active button otherwise show inactive button
-        },
-        child: Text('${AppStrings.shopwPlaces} ($amount)'),
+        onPressed: isButtonActive ? () {} : null,
+        child: Text('${AppStrings.shopwPlaces} ($foundSightsCount)'),
       ),
     );
   }
