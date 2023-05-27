@@ -6,21 +6,25 @@ class CustomColors extends ThemeExtension<CustomColors> {
     buttonIcon: AppColors.lBottomIcon,
     cardbackground: AppColors.lCardBacground,
     favoriteBackground: AppColors.lFavoriteBackground,
+    clearButton: AppColors.lightGreen,
   );
   static const dark = CustomColors(
     buttonIcon: AppColors.dBottomIcon,
     cardbackground: AppColors.dCardBacground,
     favoriteBackground: AppColors.dFavoriteBackground,
+    clearButton: AppColors.lightGreen,
   );
 
   final Color buttonIcon;
   final Color cardbackground;
   final Color favoriteBackground;
+  final Color clearButton;
 
   const CustomColors({
     this.buttonIcon = Colors.transparent,
     this.cardbackground = Colors.transparent,
     this.favoriteBackground = Colors.transparent,
+    this.clearButton = Colors.transparent,
   });
 
   @override

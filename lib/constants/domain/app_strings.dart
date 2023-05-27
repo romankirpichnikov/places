@@ -22,5 +22,5 @@ class AppStrings {
   //filters screen
   static const categories = 'КАТЕГОРИИ';
   static const distance = 'Расстояние';
-  static const shopwPlaces = 'Показать';
+  static const showPlaces = 'Показать';
 }

@@ -19,6 +19,8 @@ class AppColors {
 
   static const lightGreen = Color.fromRGBO(76, 175, 80, 1);
   static const lCategoryBackground = Color.fromRGBO(76, 175, 80, 0.16);
+  static final lCategoryBackgroundWithOpacity =
+      lCategoryBackground.withOpacity(0.2);
 
   // // dark theme colors
   static const dBaseColor = Color(0xFF21222C);
