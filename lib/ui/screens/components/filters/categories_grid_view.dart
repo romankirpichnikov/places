@@ -31,34 +31,40 @@ class CategoriesGridView extends StatelessWidget {
           },
           child: Column(
             children: [
-              Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  color: category.isSelected
-                      ? AppColors.lCategoryBackground
-                      : AppColors.lCategoryBackgroundWithOpacity,
-                  borderRadius: const BorderRadius.all(Radius.circular(60)),
-                ),
-                child: Stack(
-                  children: [
-                    Center(
-                      child: SizedBox(
-                        height: 34,
-                        width: 34,
-                        child: SvgPicture.asset(
-                          color: AppColors.lightGreen,
-                          category.icon,
+              InkWell(
+                onTap: () {
+                  onTap(category);
+                },
+                borderRadius: const BorderRadius.all(Radius.circular(60)),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: category.isSelected
+                        ? AppColors.lCategoryBackground
+                        : AppColors.lCategoryBackgroundWithOpacity,
+                    borderRadius: const BorderRadius.all(Radius.circular(60)),
+                  ),
+                  child: Stack(
+                    children: [
+                      Center(
+                        child: SizedBox(
+                          height: 34,
+                          width: 34,
+                          child: SvgPicture.asset(
+                            color: AppColors.lightGreen,
+                            category.icon,
+                          ),
                         ),
                       ),
-                    ),
-                    if (category.isSelected)
-                      const Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Icon(Icons.check_circle, size: 24),
-                      ),
-                  ],
+                      if (category.isSelected)
+                        const Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: Icon(Icons.check_circle, size: 24),
+                        ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
