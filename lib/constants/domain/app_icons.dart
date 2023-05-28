@@ -11,6 +11,7 @@ class AppIcons {
   static const String goRoute = 'res/icons/go_route.svg';
   static const String search = 'res/icons/search.svg';
   static const String filter = 'res/icons/filter.svg';
+  static const String information = 'res/icons/information.svg';
 
   //categories
   static const String cafe = 'res/icons/categories/cafe.svg';

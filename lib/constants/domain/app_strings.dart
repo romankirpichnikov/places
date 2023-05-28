@@ -23,4 +23,9 @@ class AppStrings {
   static const categories = 'КАТЕГОРИИ';
   static const distance = 'Расстояние';
   static const showPlaces = 'Показать';
+
+  //seettings screen
+  static const settings = 'Настройки';
+  static const darkTheme = 'Темная тема';
+  static const onboarding = 'Смотреть туториал';
 }
