@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/screens/res/themes.dart';
+import 'package:places/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -9,30 +10,23 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool isDarkMode = AppTheme.isDark;
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(isDarkMode ? 'Dark' : 'Light'),
+            Text(themeProvider.isDarkMode ? 'Dark' : 'Light'),
             Switch(
-              value: isDarkMode,
-              onChanged: _toggleTheme,
+              value: themeProvider.isDarkMode,
+              onChanged: (value) => themeProvider.toggleTheme(),
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _toggleTheme(bool value) {
-    return setState(() {
-      isDarkMode = value;
-      AppTheme.isDark = isDarkMode;
-    });
   }
 }

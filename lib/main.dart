@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/mocks/sights.dart';
+import 'package:places/providers/theme_provider.dart';
 import 'package:places/ui/screens/map_screen.dart';
 import 'package:places/ui/screens/res/custom_color_scheme.dart';
-import 'package:places/ui/screens/res/themes.dart';
 import 'package:places/ui/screens/settings_screen.dart';
 import 'package:places/ui/screens/sight_list_screen.dart';
 import 'package:places/ui/screens/visiting_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const App());
+  runApp(
+    ChangeNotifierProvider<ThemeProvider>(
+      create: (context) => ThemeProvider(),
+      child: const App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -18,8 +24,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
-      theme: AppTheme.isDark ? AppTheme.dark : AppTheme.light,
+      theme: themeProvider.currentTheme,
       home: const TabScreen(),
     );
   }
