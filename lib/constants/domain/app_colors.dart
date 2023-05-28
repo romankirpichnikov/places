@@ -16,6 +16,7 @@ class AppColors {
   static const inactiveColor = Color.fromRGBO(124, 126, 146, 0.56);
   static const indicatorColor = Color.fromRGBO(59, 62, 91, 1);
   static const lFavoriteBackground = backgroundColor;
+  static const searchBoxBacground = Color.fromRGBO(230, 230, 230, 1);
 
   static const lightGreen = Color.fromRGBO(76, 175, 80, 1);
   static const lCategoryBackground = Color.fromRGBO(76, 175, 80, 0.16);

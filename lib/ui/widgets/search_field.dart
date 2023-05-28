@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/ui/screens/filter_screen.dart';
+import 'package:places/ui/screens/res/custom_color_scheme.dart';
 import 'package:places/ui/widgets/buttons/flat_button.dart';
 
 class SearchField extends StatefulWidget {
@@ -17,40 +18,50 @@ class SearchField extends StatefulWidget {
 class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
+    final customTheme = Theme.of(context).extension<CustomColors>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: 20,
-              height: 20,
-              child: SvgPicture.asset(
-                AppIcons.search,
-              ),
-            ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: customTheme?.searchBox,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
           ),
-          const Flexible(
-            child: TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: AppStrings.serach,
-              ),
-            ),
-          ),
-          FlatButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<FiltersScreen>(
-                  builder: (context) => const FiltersScreen(),
+        ),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: SvgPicture.asset(
+                  AppIcons.search,
                 ),
-              );
-            },
-            icon: SvgPicture.asset(AppIcons.filter),
-          ),
-        ],
+              ),
+            ),
+            const Flexible(
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: AppStrings.serach,
+                ),
+              ),
+            ),
+            FlatButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<FiltersScreen>(
+                    builder: (context) => const FiltersScreen(),
+                  ),
+                );
+              },
+              icon: SvgPicture.asset(AppIcons.filter),
+            ),
+          ],
+        ),
       ),
     );
   }

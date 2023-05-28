@@ -7,24 +7,29 @@ class CustomColors extends ThemeExtension<CustomColors> {
     cardbackground: AppColors.lCardBacground,
     favoriteBackground: AppColors.lFavoriteBackground,
     clearButton: AppColors.lightGreen,
+    searchBox: AppColors.searchBoxBacground,
   );
+
   static const dark = CustomColors(
     buttonIcon: AppColors.dBottomIcon,
     cardbackground: AppColors.dCardBacground,
     favoriteBackground: AppColors.dFavoriteBackground,
     clearButton: AppColors.lightGreen,
+    searchBox: AppColors.dCardBacground,
   );
 
   final Color buttonIcon;
   final Color cardbackground;
   final Color favoriteBackground;
   final Color clearButton;
+  final Color searchBox;
 
   const CustomColors({
     this.buttonIcon = Colors.transparent,
     this.cardbackground = Colors.transparent,
     this.favoriteBackground = Colors.transparent,
     this.clearButton = Colors.transparent,
+    this.searchBox = Colors.transparent,
   });
 
   @override
