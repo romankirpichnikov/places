@@ -15,6 +15,7 @@ class AppTheme {
       bodyMedium: AppTextStyles.baseTextBold,
       headlineMedium: AppTextStyles.lHeavyWeightTitle,
       bodyLarge: AppTextStyles.lMainTitle,
+      labelMedium: AppTextStyles.lSettingsText,
     ),
   );
 
@@ -29,6 +30,7 @@ class AppTheme {
       bodyMedium: AppTextStyles.dBaseTextBold,
       headlineMedium: AppTextStyles.dHeavyWeightTitle,
       bodyLarge: AppTextStyles.dMainTitle,
+      labelMedium: AppTextStyles.dSettingsText,
     ),
   );
 

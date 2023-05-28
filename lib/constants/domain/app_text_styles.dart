@@ -17,6 +17,16 @@ class AppTextStyles {
     decoration: TextDecoration.none,
   );
 
+  static const lSettingsText = TextStyle(
+    fontSize: 16,
+    color: AppColors.lTextBase,
+    fontWeight: FontWeight.w400,
+  );
+
+  static final dSettingsText = lSettingsText.copyWith(
+    color: AppColors.backgroundColor,
+  );
+
   static final dBaseText = lBaseText.copyWith(
     color: AppColors.dTextBase,
   );

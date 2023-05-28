@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
@@ -33,35 +34,51 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(AppStrings.darkTheme),
-                Switch(
+                Text(
+                  AppStrings.darkTheme,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                CupertinoSwitch(
                   value: themeProvider.isDarkMode,
                   onChanged: (value) => themeProvider.toggleTheme(),
                 ),
               ],
             ),
-            const Divider(
-              color: Colors.grey,
-              thickness: 0.4,
-              height: 10,
-            ),
+            const _SettingsDevider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(AppStrings.onboarding),
-                SvgPicture.asset(
-                  AppIcons.information,
+                Text(
+                  AppStrings.onboarding,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 32,
+                    width: 32,
+                    child: SvgPicture.asset(
+                      AppIcons.information,
+                    ),
+                  ),
                 ),
               ],
             ),
-            const Divider(
-              color: Colors.grey,
-              thickness: 0.4,
-              height: 10,
-            ),
+            const _SettingsDevider(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SettingsDevider extends StatelessWidget {
+  const _SettingsDevider();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Divider(
+      color: Colors.grey,
     );
   }
 }
