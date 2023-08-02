@@ -53,7 +53,7 @@ class SightCard extends StatelessWidget {
                       loadingBuilder: loadingBuilder,
                     ),
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.only(top: 5, left: 10),
                       child: Column(
                         children: [
                           Row(

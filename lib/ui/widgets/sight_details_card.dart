@@ -1,10 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/constants/domain/app_colors.dart';
+import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/constants/domain/app_text_styles.dart';
 import 'package:places/constants/domain/sight_types.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screens/res/custom_color_scheme.dart';
+import 'package:places/ui/widgets/buttons/flat_button.dart';
 import 'package:places/ui/widgets/custom_app_bar.dart';
 import 'package:places/utils/loading_builder.dart';
 
@@ -77,10 +82,20 @@ class SightDetailsCard extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.green,
                   ),
-                  child: const Center(
-                    child: Text(
-                      AppStrings.buildRoute,
-                      style: TextStyle(color: AppColors.white),
+                  child: Center(
+                    child: FlatButton(
+                      onPressed: () {
+                        log('Presseed on route button ${sight.name}');
+                      },
+                      icon: SvgPicture.asset(
+                        AppIcons.goRoute,
+                        color: Colors.white,
+                        width: 24,
+                      ),
+                      label: const Text(
+                        AppStrings.buildRoute,
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
@@ -93,21 +108,33 @@ class SightDetailsCard extends StatelessWidget {
                   endIndent: 20,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    SizedBox(
-                      width: 164,
-                      height: 40,
-                      child: Center(
-                        child: Text(
-                          AppStrings.toDoPlane,
-                        ),
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FlatButton(
+                      onPressed: () {
+                        log('Presseed on planned button ${sight.name}');
+                      },
+                      icon: SvgPicture.asset(
+                        AppIcons.calendar,
+                        color: Colors.grey,
+                        width: 20,
+                      ),
+                      label: const Text(
+                        AppStrings.toDoPlane,
                       ),
                     ),
-                    SizedBox(
-                      width: 164,
-                      height: 40,
-                      child: Center(child: Text(AppStrings.toFavorite)),
+                    FlatButton(
+                      onPressed: () {
+                        log('Presseed on favorite button ${sight.name}');
+                      },
+                      icon: SvgPicture.asset(
+                        AppIcons.heart,
+                        color: Colors.grey,
+                        width: 20,
+                      ),
+                      label: const Text(
+                        AppStrings.toFavorite,
+                      ),
                     ),
                   ],
                 ),
@@ -115,6 +142,9 @@ class SightDetailsCard extends StatelessWidget {
             ),
           ),
           Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
             child: CustomAppBar(
               backgroundColor: Colors.transparent,
               leading: Container(

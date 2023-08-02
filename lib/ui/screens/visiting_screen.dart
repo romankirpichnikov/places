@@ -47,6 +47,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           bottom: CustomTabBar(tabData: tabData),
+          sizeMultipler: 2.5,
         ),
         body: TabBarView(
           children: tabDataViewMaping,

@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:places/constants/domain/app_icons.dart';
 import 'package:places/constants/domain/app_strings.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/widgets/buttons/flat_button.dart';
 import 'package:places/ui/widgets/favorities/empty.dart';
 import 'package:places/ui/widgets/sight_card.dart';
 
@@ -27,14 +30,21 @@ class PlannedToVisit extends StatelessWidget {
           return SightCard(
             sight: sight,
             actions: [
-              Container(
-                margin: const EdgeInsets.only(right: 15),
-                child: SvgPicture.asset(AppIcons.calendar),
+              FlatButton(
+                onPressed: () {
+                  log('Presseed on calendar button ${sight.name}');
+                },
+                icon: SvgPicture.asset(AppIcons.calendar),
               ),
-              SizedBox(
-                width: 26,
-                height: 26,
-                child: SvgPicture.asset(AppIcons.cross),
+              FlatButton(
+                onPressed: () {
+                  log('Presseed on cross button ${sight.name}');
+                },
+                icon: SizedBox(
+                  width: 26,
+                  height: 26,
+                  child: SvgPicture.asset(AppIcons.cross),
+                ),
               ),
             ],
             content: Padding(
