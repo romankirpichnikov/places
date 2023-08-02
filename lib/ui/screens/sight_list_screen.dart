@@ -29,7 +29,7 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       body: Column(
         children: [
-          SearchField(),
+          const SearchField(),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:places/ui/screens/res/themes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:places/constants/domain/app_icons.dart';
+import 'package:places/constants/domain/app_strings.dart';
+import 'package:places/providers/theme_provider.dart';
+import 'package:places/ui/widgets/custom_app_bar.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -9,30 +15,70 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool isDarkMode = AppTheme.isDark;
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
-      body: Center(
+      appBar: CustomAppBar(
+        backgroundColor: Theme.of(context).canvasColor,
+        title: Text(
+          AppStrings.settings,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(isDarkMode ? 'Dark' : 'Light'),
-            Switch(
-              value: isDarkMode,
-              onChanged: _toggleTheme,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.darkTheme,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                CupertinoSwitch(
+                  value: themeProvider.isDarkMode,
+                  onChanged: (value) => themeProvider.toggleTheme(),
+                ),
+              ],
             ),
+            const _SettingsDevider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.onboarding,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 32,
+                    width: 32,
+                    child: SvgPicture.asset(
+                      AppIcons.information,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const _SettingsDevider(),
           ],
         ),
       ),
     );
   }
+}
 
-  void _toggleTheme(bool value) {
-    return setState(() {
-      isDarkMode = value;
-      AppTheme.isDark = isDarkMode;
-    });
+class _SettingsDevider extends StatelessWidget {
+  const _SettingsDevider();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Divider(
+      color: Colors.grey,
+    );
   }
 }
