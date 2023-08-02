@@ -25,13 +25,14 @@ class CategoriesGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         final category = categories[index];
 
-        return GestureDetector(
-          onTap: () {
-            onTap(category);
-          },
-          child: Column(
-            children: [
-              Container(
+        return Column(
+          children: [
+            InkWell(
+              onTap: () {
+                onTap(category);
+              },
+              borderRadius: const BorderRadius.all(Radius.circular(60)),
+              child: Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
@@ -61,13 +62,13 @@ class CategoriesGridView extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
-              Text(
-                category.name,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              category.name,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
         );
       },
     );
