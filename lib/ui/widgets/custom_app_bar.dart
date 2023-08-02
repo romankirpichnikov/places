@@ -8,6 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
   final PreferredSizeWidget? bottom;
   final double? sizeMultipler;
+  final List<Widget>? actions;
 
   @override
   Size get preferredSize =>
@@ -21,6 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = true,
     this.bottom,
     this.sizeMultipler = 1.0,
+    this.actions,
   });
 
   @override
@@ -34,6 +36,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 16,
       leading: leading,
       bottom: bottom,
+      actions: actions,
     );
   }
 }

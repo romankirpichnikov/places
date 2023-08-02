@@ -16,4 +16,11 @@ class AppStrings {
   static const toFavorite = 'В избранное';
   static const toDoPlane = 'Запланировать';
   static const loading = 'Загрузка';
+  static const serach = 'Поиск';
+  static const clear = 'Очистить';
+
+  //filters screen
+  static const categories = 'КАТЕГОРИИ';
+  static const distance = 'Расстояние';
+  static const showPlaces = 'Показать';
 }
